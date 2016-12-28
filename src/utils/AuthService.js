@@ -16,6 +16,10 @@ export default class AuthService {
     return localStorage.getItem('auth_token')
   }
 
+  loggedIn() {
+    return !!this.getToken()
+  }
+
   login(login, password) {
     let self = this
     axios.post(config.apiUrl + '/sessions/signin', {login, pass: password}).then((res) => {
